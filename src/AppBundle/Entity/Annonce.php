@@ -75,6 +75,10 @@ class Annonce
     {
         return $this->getTitre();
     }
+    // public function __construct($utilisateur)
+    // {
+    //     $this->setUtilisateur($utilisateur);
+    // }
     // ==================================================================
     //                              GET / SET
     // ==================================================================
@@ -82,30 +86,63 @@ class Annonce
     /**
      * Get utilisateur
      *
-     * @return int
+     * @return Utilisateur
+     * 
      */
     public function getUtilisateur()
     {
         return $this->utilisateur;
     }
     /**
+     * Set utilisateur
+     *
+     */
+    public function setUtilisateur($utilisateur)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+    /**
      * Get client
      *
-     * @return int
+     * @return Client
+     * 
      */
     public function getClient()
     {
         return $this->client;
     }
     /**
+     * Set client
+     *
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+    /**
      * Get categorie
      *
+     * @return Categorie
+     * 
      */
     public function getCategorie()
     {
         return $this->categorie;
     }
+    /**
+     * Set categorie
+     *
+     */
+    public function setCategorie($categorie)
+    {
+        $this->categorie = $categorie;
 
+        return $this;
+    }
 
 
 
