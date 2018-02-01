@@ -3,21 +3,46 @@
 {% block title %}Liste des annonces{% endblock %}
 
 {% block body %}
+<div class="col-xs-12 col-sm-6">
+    {# <input itype="text" onkeyup="filter(this, 'ListCoder')" placeholder="Saisir la recherche..." class="form-control"> #}
+<input id="search" type="text"  placeholder="Saisir la recherche..." class="form-control">
+    
+    <br />
+</div>
+<div class="col-xs-12 col-sm-6">
+    <select name="filtre" id="filtre" class="form-control">
+        {% for categorie in categories %}
+            <option value="{{ categorie.titre }}"><a href="">{{ categorie.titre }}</a></option>
+        {% endfor %}
+    </select>
+    <br/>
+</div>
+<div class="col-xs-12">
 
     <table id="ListCoder" class="table table-bordered table-striped table-hover">
-        <tr>
-            <th>Titre</th>
-            <th>Prix</th>
-            <th>Nombre de pièces</th>
-        </tr>
+        <thead>
+            <tr>
+                <th><span class="glyphicon glyphicon-sort" aria-hidden="true"></span> Titre</th>
+                <th><span class="glyphicon glyphicon-sort" aria-hidden="true"></span> Prix</th>
+                <th><span class="glyphicon glyphicon-sort" aria-hidden="true"></span> Nombre de pièces</th>
+                <th><span class="glyphicon glyphicon-sort" aria-hidden="true"></span> Type</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        
         {% for annonce in annonces %}
-            <td>{{ annonce.titre }}</td>
-            <td>{{ annonce.prix }}</td>
-            <td>{{ annonce.nombrePiece }}</td>
-
+            <tr>
+                <td>{{ annonce.titre }}</td>
+                <td>{{ annonce.prix }}</td>
+                <td>{{ annonce.nombrePiece }}</td>
+                <td>{{ annonce.categorie.titre }}</td>
+            </tr>
+            
         {% endfor %}
-        <tr></tr>
+</tbody>
     </table>
+</div>
 
 {% endblock %}
 {% block javascripts %}
