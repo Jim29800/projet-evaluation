@@ -152,6 +152,7 @@ easy_admin:
                     -  {property: client, label: "Client" }
                     -  {property: categorie, label: "Catégorie" }
                     -  {property: titre, label: "Titre de l'annonce" }
+                    -  {property: prix, label: "Prix" }                    
                     -  {property: description, label: "Déscription" }
                     -  {property: nombrePiece, label: "Nombre de pièces" }
                     # - utilisateur

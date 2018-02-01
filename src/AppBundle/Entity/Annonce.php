@@ -31,7 +31,12 @@ class Annonce
      * @ORM\Column(name="ann_titre", type="string", length=255)
      */
     private $titre;
-
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="ann_prix", type="float")
+     */
+    private $prix;
     /**
      * @var string
      *
@@ -284,6 +289,31 @@ class Annonce
     public function getNombrePiece()
     {
         return $this->nombrePiece;
+    }
+
+
+    /**
+     * Set prix
+     *
+     * @param integer $prix
+     *
+     * @return Annonce
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return int
+     */
+    public function getPrix()
+    {
+        return $this->prix;
     }
 }
 
