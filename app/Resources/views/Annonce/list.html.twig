@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Liste des annonces{% endblock %}
+
+{% block body %}
+
+    <table id="ListCoder" class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>Titre</th>
+            <th>Prix</th>
+            <th>Nombre de pièces</th>
+        </tr>
+        {% for annonce in annonces %}
+            <td>{{ annonce.titre }}</td>
+            <td>{{ annonce.prix }}</td>
+            <td>{{ annonce.nombrePiece }}</td>
+
+        {% endfor %}
+        <tr></tr>
+    </table>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js"></script>
+    <script src="js/sort.js"></script>
+{% endblock %}
