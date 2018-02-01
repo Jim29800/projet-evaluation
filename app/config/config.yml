@@ -154,12 +154,16 @@ easy_admin:
                     -  {property: titre, label: "Titre de l'annonce" }
                     -  {property: description, label: "Déscription" }
                     -  {property: nombrePiece, label: "Nombre de pièces" }
-                    -  {property: 'photoFile', type: 'vich_image' }                    
                     # - utilisateur
             new:                     
                 title: "Création d'une annonce"   
+                fields:
+                    -  {property: 'photoFile', type: 'vich_image', type_options: { required: true } }               
             edit:
                 title: "Modification d'une annonce"
+                fields:
+                    -  {property: 'photoFile', type: 'vich_image' }               
+                
             list:
                 title: "Liste des annonces"                        
                 fields:
