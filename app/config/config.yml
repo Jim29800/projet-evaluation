@@ -163,7 +163,7 @@ easy_admin:
             list:
                 title: "Liste des annonces"                        
                 fields:
-                    -  { roperty: 'photo', type: 'image', base_path: 'photos' } 
+                    -  {property: 'photo', type: 'image', base_path: 'photos' } 
                     -  {property: titre, label: "Titre de l'annonce" }
                     -  {property: utilisateur, label: "Auteur" }
                     
