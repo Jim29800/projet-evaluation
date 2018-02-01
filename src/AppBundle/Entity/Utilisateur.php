@@ -9,7 +9,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 /**
  * Utilisateur
  *
- * @ORM\Table(name="utilisateur")
+ * @ORM\Table(name="uti_utilisateur")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UtilisateurRepository")
  */
 class Utilisateur extends BaseUser
