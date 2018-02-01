@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Categorie
@@ -15,7 +16,7 @@ class Categorie
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="cat_oid", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,11 +25,19 @@ class Categorie
     /**
      * @var string
      *
-     * @ORM\Column(name="titre", type="string", length=255)
+     * @ORM\Column(name="cat_titre", type="string", length=255)
      */
     private $titre;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Annonce", mappedBy="categorie")
+     */
+    private $categories;
 
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
     /**
      * Get id
      *

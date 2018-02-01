@@ -15,7 +15,7 @@ class Annonce
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="ann_oid", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,30 +24,86 @@ class Annonce
     /**
      * @var string
      *
-     * @ORM\Column(name="titre", type="string", length=255)
+     * @ORM\Column(name="ann_titre", type="string", length=255)
      */
     private $titre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="ann_description", type="string", length=255)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="photo", type="string", length=255)
+     * @ORM\Column(name="ann_photo", type="string", length=255)
      */
     private $photo;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="nombre_piece", type="integer")
+     * @ORM\Column(name="ann_nombre_piece", type="integer")
      */
     private $nombrePiece;
+
+    // ==================================================================
+    //                              Relations
+    // ==================================================================
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Utilisateur", inversedBy="annonces")
+     * @ORM\JoinColumn(name="uti_oid", referencedColumnName="uti_oid")
+     */
+    private $utilisateur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Client")
+     * @ORM\JoinColumn(name="cli_oid", referencedColumnName="cli_oid")
+     */
+    private $client;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="categories")
+     * @ORM\JoinColumn(name="cat_oid", referencedColumnName="cat_oid")
+     */
+    private $categorie;
+
+    // ==================================================================
+    //                              GET / SET
+    // ==================================================================
+
+    /**
+     * Get utilisateur
+     *
+     * @return int
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
+    /**
+     * Get client
+     *
+     * @return int
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+    /**
+     * Get categorie
+     *
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+
+
 
 
     /**
