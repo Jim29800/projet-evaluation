@@ -38,6 +38,12 @@ class Categorie
     {
         $this->categories = new ArrayCollection();
     }
+
+    public function __toString()
+    {
+        return $this->getTitre();
+    }
+
     /**
      * Get id
      *

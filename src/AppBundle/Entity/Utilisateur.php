@@ -54,7 +54,10 @@ class Utilisateur extends BaseUser
         parent::__construct();
         $this->annonces = new ArrayCollection();
     }
-
+    public function __toString()
+    {
+        return $this->getNom() . " " . $this->getPrenom();
+    }
     /**
      * Get id
      *

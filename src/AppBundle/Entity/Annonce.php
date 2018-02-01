@@ -55,22 +55,26 @@ class Annonce
 
     /**
      * @ORM\ManyToOne(targetEntity="Utilisateur", inversedBy="annonces")
-     * @ORM\JoinColumn(name="uti_oid", referencedColumnName="uti_oid")
+     * @ORM\JoinColumn(name="uti_oid", referencedColumnName="uti_oid", nullable=false)
      */
     private $utilisateur;
 
     /**
      * @ORM\ManyToOne(targetEntity="Client")
-     * @ORM\JoinColumn(name="cli_oid", referencedColumnName="cli_oid")
+     * @ORM\JoinColumn(name="cli_oid", referencedColumnName="cli_oid", nullable=false)
      */
     private $client;
 
     /**
      * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="categories")
-     * @ORM\JoinColumn(name="cat_oid", referencedColumnName="cat_oid")
+     * @ORM\JoinColumn(name="cat_oid", referencedColumnName="cat_oid", nullable=false)
      */
     private $categorie;
 
+    public function __toString()
+    {
+        return $this->getTitre();
+    }
     // ==================================================================
     //                              GET / SET
     // ==================================================================
