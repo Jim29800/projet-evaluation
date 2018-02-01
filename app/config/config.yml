@@ -74,7 +74,14 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
-        
+# app/config/config.yml 
+vich_uploader: 
+    db_driver: orm 
+    mappings: 
+        photo: 
+            uri_prefix: /photos
+            upload_destination: '%kernel.root_dir%/../web/photos' 
+            namer: vich_uploader.namer_uniqid
 easy_admin:
     site_name: 'Carcassonne Immo<a href="/" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Retour sur le site</a>'
     list:
@@ -93,7 +100,7 @@ easy_admin:
                     -  {property: email,label: "Email" }
                     -  {property: nom, label: "Nom" }
                     -  {property: prenom , label: "Prénom"}
-                    -  {property: telephone, label: "Numéro de téléphone" }                                      
+                    -  {property: telephone, label: "Numéro de téléphone" }                                
                     # - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_ADMIN': 'ROLE_ADMIN' } } }                
                     # - { property: 'avatarFile', type: 'vich_image' }
             new:   
@@ -140,23 +147,25 @@ easy_admin:
                     -  {property: titre, label: "Catégorie" }
         Annonce:
             class: AppBundle\Entity\Annonce
-            new:   
-                title: "Création d'une annonce"      
-            edit:
-                title: "Modification d'une annonce"
             form:         
                 fields:
                     -  {property: client, label: "Client" }
                     -  {property: categorie, label: "Catégorie" }
                     -  {property: titre, label: "Titre de l'annonce" }
                     -  {property: description, label: "Déscription" }
-                    -  {property: photo, label: "photo" }
                     -  {property: nombrePiece, label: "Nombre de pièces" }
+                    -  {property: 'photoFile', type: 'vich_image' }                    
                     # - utilisateur
+            new:                     
+                title: "Création d'une annonce"   
+            edit:
+                title: "Modification d'une annonce"
             list:
                 title: "Liste des annonces"                        
                 fields:
+                    -  { roperty: 'photo', type: 'image', base_path: 'photos' } 
                     -  {property: titre, label: "Titre de l'annonce" }
                     -  {property: utilisateur, label: "Auteur" }
+                    
 
 

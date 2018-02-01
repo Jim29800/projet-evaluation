@@ -3,12 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 /**
  * Annonce
  *
  * @ORM\Table(name="annonce")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AnnonceRepository")
+ * @Vich\Uploadable
+ * 
  */
 class Annonce
 {
@@ -35,12 +39,32 @@ class Annonce
      */
     private $description;
 
+    // ==================================================================
+    //                              Photo
+    // ==================================================================
     /**
      * @var string
      *
-     * @ORM\Column(name="ann_photo", type="string", length=255)
+     * @ORM\Column(name="ann_photo", type="string")
      */
     private $photo;
+
+    /**
+     * * @Assert\Image(
+     *     maxSize = "500k",
+     *     mimeTypes = {"image/jpeg", "image/png"},
+     *     maxSizeMessage = "Le fichier est trop volumineux",
+     *     mimeTypesMessage = "Mauvais format d'image"
+     * )
+     * @Vich\UploadableField(mapping="photo", fileNameProperty="photo")
+     * @var File
+     */
+    private $photoFile;
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     /**
      * @var int
@@ -75,10 +99,6 @@ class Annonce
     {
         return $this->getTitre();
     }
-    // public function __construct($utilisateur)
-    // {
-    //     $this->setUtilisateur($utilisateur);
-    // }
     // ==================================================================
     //                              GET / SET
     // ==================================================================
@@ -145,6 +165,19 @@ class Annonce
     }
 
 
+    public function setPhotoFile(File $photo = null)
+    {
+        $this->photoFile = $photo;
+
+        if ($photo) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+    public function getPhotoFile()
+    {
+        return $this->photoFile;
+    }
 
 
     /**
