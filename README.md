@@ -27,14 +27,14 @@ Firstly i created the following documents :
 
 After finishing with this, i have done the first part : 
 
-* Backoffice
+### Backoffice
  * This space is only accessible to registered and identified persons
  * In this space you can manage users, customers, categories and ads.
 
 And finaly the last step :
 
-* Frontoffice
- * This space is open for everyone, you can access to it anonymously
- * here is 2 pages :
-   * The first page contain a list of all ads that you can filter by category, you can also make a search in the ads title.
-   * The second page contain the detail of an ad with a picture.
+### Frontoffice
+* This space is open for everyone, you can access to it anonymously
+* here is 2 pages :
+  * The first page contain a list of all ads that you can filter by category, you can also make a search in the ads title.
+  * The second page contain the detail of an ad with a picture.
