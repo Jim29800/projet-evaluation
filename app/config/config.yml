@@ -153,7 +153,7 @@ easy_admin:
                     -  {property: categorie, label: "Catégorie" }
                     -  {property: titre, label: "Titre de l'annonce" }
                     -  {property: prix, label: "Prix" }                    
-                    -  {property: description, label: "Déscription" }
+                    -  {property: description,type: 'textarea', label: "Déscription" }
                     -  {property: nombrePiece, label: "Nombre de pièces" }
                     # - utilisateur
             new:                     
