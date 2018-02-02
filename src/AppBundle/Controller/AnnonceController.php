@@ -10,11 +10,10 @@ class AnnonceController extends Controller
 {
     /**
      * @Route("/annonces", name="list_annonce")
+     * 
      */
     public function listAction(Request $request)
     {
-
-
         $em = $this->getDoctrine()->getManager();
 
         $categories = $em->getRepository("AppBundle:Categorie")->findAll();
@@ -34,21 +33,17 @@ class AnnonceController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
             $data = $form->getData("filtre");
             $annonces = $em->getRepository("AppBundle:Annonce")->findByCategorie($data);
-            $filtrer = $data["filtre"];
-            
-        }else {
+            $filtrer = $data["filtre"];    
+        }
+        else 
+        {
             $annonces = $em->getRepository("AppBundle:Annonce")->findAll();
             $filtrer = "";            
         }
-
-
-
-
-
-
         return $this->render('Annonce/list.html.twig', array(
             "annonces" => $annonces,
             "form" => $form->createView(),
@@ -59,10 +54,12 @@ class AnnonceController extends Controller
     /**
      * @Route("/annonce/{id}")
      */
-    public function showAction()
+    public function showAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $annonce = $em->getRepository("AppBundle:Annonce")->findOneById($id);
         return $this->render('Annonce/show.html.twig', array(
-            // ...
+            "annonce" => $annonce,
         ));
     }
 
