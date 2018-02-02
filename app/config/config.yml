@@ -168,7 +168,10 @@ easy_admin:
             list:
                 title: "Liste des annonces"                        
                 fields:
+                    -  {property: id, label: "Référence" }  
+                    -  {property: categorie, label: "Catégorie" }                                                      
                     -  {property: 'photo', type: 'image', base_path: 'photos' } 
+                    -  {property: prix, label: "Prix" }                    
                     -  {property: titre, label: "Titre de l'annonce" }
                     -  {property: utilisateur, label: "Auteur" }
                     
