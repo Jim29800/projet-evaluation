@@ -13,30 +13,46 @@
           <span class="glyphicon glyphicon-arrow-left"></span> Liste des annonces
         </a>
 </div>
-    <div class="col-xs-12 col-sm-6">
-        <div class="text-center">
-            <img src="/photos/{{ annonce.photo }}" alt="Photo {{ annonce.titre }}" class="img-thumbnail image">
+<div class="col-xs-12 col-sm-6">
+    <div class="text-center">
+        <img src="/photos/{{ annonce.photo }}" alt="Photo {{ annonce.titre }}" class="img-thumbnail image">
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <h3>
+            <ul class="list-unstyled">
+                <li>
+                    {{ annonce.titre }}
+                </li>
+                <li>
+                    {{ annonce.categorie }} : {{ annonce.prix }} €
+                </li>
+                <li>
+                    {{ annonce.nombrePiece }} pièces
+                </li>
+            </ul>
+            </h3>
         </div>
-        <div class="panel panel-default">
-            <div class="panel-heading text-center">
-                <h3>
-                <ul class="list-unstyled">
-                    <li>
-                        {{ annonce.titre }}
-                    </li>
-                    <li>
-                        {{ annonce.categorie }} : {{ annonce.prix }} €
-                    </li>
-                    <li>
-                        {{ annonce.nombrePiece }} pièces
-                    </li>
-                </ul>
-                </h3>
-            </div>
         <div class="panel-body">
-        </div>
-        <span class="bold">Déscription :</span><br /s>
+            <span class="bold">Déscription :</span><br />
             {{ annonce.description }}        
         </div>
     </div>
+</div>
+<div class="col-xs-12 col-sm-3">
+<div class="panel panel-default">
+    <div class="panel-heading text-center">
+        Contacter l'agent
+    </div>
+    <div class="panel-body">
+        <span class="bold text-uppercase">{{ annonce.utilisateur.nom }} {{ annonce.utilisateur.prenom }}</span><br /><br />
+
+        <span class="bold">Téléphone :</span><br />
+        {{ annonce.utilisateur.telephone }}<br />
+
+        <span class="bold">Email :</span><br />
+        {{ annonce.utilisateur.email }}       
+    </div>
+</div>
+</div>
 {% endblock %}
