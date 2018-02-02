@@ -49,7 +49,7 @@
         {% for annonce in annonces %}
             <tr onclick="document.location = 'annonce/{{ annonce.id }}';">
                 <td>{{ annonce.titre }}</td>
-                <td>{{ annonce.prix }}</td>
+                <td>{{ annonce.prix }} €</td>
                 <td>{{ annonce.nombrePiece }}</td>
                 <td>{{ annonce.categorie.titre }}</td>
             </tr>
