@@ -33,3 +33,10 @@ $("#search").keyup(function () {
         });
     });
 });
+if ($("#cat").text() == "") {
+    console.log("vide")
+    $("#form_filtre").prepend("<option disabled='disabled' selected='selected' value='-1' >Filtrer par catégorie</option>");        
+}else{
+    $("#form_filtre").prepend("<option value='-1' >Toute les catégories</option>");        
+    
+}

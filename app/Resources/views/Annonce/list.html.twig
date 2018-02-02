@@ -3,6 +3,16 @@
 {% block title %}Liste des annonces{% endblock %}
 
 {% block body %}
+
+<div class="col-xs-12 text-center">
+{% if filtrer is not empty %}
+    <h2  id="cat">Catégorie : {{ filtrer.titre }}</h2>
+    {# <input type="hidden" name="cat" id="cat" value="{{ filtrer.id }}"> #}
+{% else %}
+    <h2>Toute les catégories</h2>
+{% endif %}
+</div>
+
 <div class="col-xs-12 col-sm-6">
     {# <input itype="text" onkeyup="filter(this, 'ListCoder')" placeholder="Saisir la recherche..." class="form-control"> #}
 <input id="search" type="text"  placeholder="Saisir la recherche..." class="form-control">
@@ -10,14 +20,19 @@
     <br />
 </div>
 <div class="col-xs-12 col-sm-6">
-    <select name="filtre" id="filtre" class="form-control">
+    {# <select name="filtre" id="filtre" class="form-control">
         {% for categorie in categories %}
             <option value="{{ categorie.titre }}"><a href="">{{ categorie.titre }}</a></option>
         {% endfor %}
-    </select>
+    </select> #}
+    {{ form_start(form) }}
+    {{ form_widget(form.filtre) }}
+    {{ form_end(form) }}
+    
     <br/>
 </div>
 <div class="col-xs-12">
+{% if annonces is not empty %}
 
     <table id="ListCoder" class="table table-bordered table-striped table-hover">
         <thead>
@@ -40,8 +55,12 @@
             </tr>
             
         {% endfor %}
-</tbody>
+        </tbody>
     </table>
+{% else %}
+    <h3>Aucune offre n'est disponnible dans la catégorie {{ filtrer.titre }} pour le moment.</h3>
+{% endif %}
+    
 </div>
 
 {% endblock %}
