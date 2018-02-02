@@ -47,7 +47,7 @@
         <tbody>
         
         {% for annonce in annonces %}
-            <tr>
+            <tr onclick="document.location = 'annonce/{{ annonce.id }}';">
                 <td>{{ annonce.titre }}</td>
                 <td>{{ annonce.prix }}</td>
                 <td>{{ annonce.nombrePiece }}</td>
